@@ -1,0 +1,74 @@
+{
+  "items": [
+		{
+			"id": "model",
+			"title": "Model",
+			"imagePath": "./assets/image/model.svg",
+			"defaultOptions": ["viewIn2DContext", "multiProduct"]
+		},
+		{
+			"id": "ar",
+			"title": "AR",
+			"imagePath": "./assets/image/ar.svg",
+			"defaultOptions": ["arImage", "arCamera"]
+		},
+		{
+			"id": "compare",
+			"title": "Compare",
+			"imagePath": "./assets/image/compare.svg",
+			"defaultOptions": ["product", "history"]
+		},
+		{
+			"id": "roomView",
+			"title": "Room View",
+			"imagePath": "./assets/image/roomView.svg",
+			"defaultOptions": ["viewIn3DContext"]
+		},
+		{
+			"id": "stagingRoom",
+			"title": "Staging Room",
+			"imagePath": "./assets/image/stagingRoom.svg",
+			"defaultOptions": ["stagingRoom"]
+		},
+		{
+			"id": "stackable",
+			"title": "Stackable",
+			"imagePath": "./assets/image/stackable.svg",
+			"defaultOptions": ["catalogItems"]
+		},
+		{
+			"id": "willItFit",
+			"title": "Will It Fit",
+			"imagePath": "./assets/image/willItFit.svg",
+			"defaultOptions": ["willItFit"]
+		},
+		{
+			"id": "wishlist",
+			"title": "Wishlist",
+			"imagePath": "./assets/image/wishlist.svg",
+			"defaultOptions": ["wishListItems"]
+		}
+  ],
+  "options": [
+    "viewIn3DContext",
+    "viewIn2DContext",
+    "multiProduct",
+    "stagingRoom",
+    "arImage",
+    "arCamera",
+    "product",
+    "history",
+    "human",
+    "catalogItems",
+    "wishListItems",
+    "willItFit"
+  ],
+  "presets": {
+    "preset1": ["model", "ar"],
+    "preset2": ["model", "compare"],
+    "preset3": ["model", "ar", "compare"],
+    "preset4": ["willItFit", "ar", "compare"],
+    "preset5": ["roomView", "stagingRoom", "ar", "compare"],
+    "preset6": ["roomView", "stagingRoom", "compare"]
+  }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/main.css">
+	<title>Experience List Generator</title>
+</head>
+<body>
+	<div class="explist__wrapper">
+		<h1>Experience List Generator</h1>
+		<div class="presets">
+			<a href="#" class="preset__link" data-preset="preset1">
+				<span>Model <em>+</em> AR</span>
+			</a>
+			<a href="#" class="preset__link" data-preset="preset2">
+				<span>Model <em>+</em> Compare</span>
+			</a>
+			<a href="#" class="preset__link" data-preset="preset3">
+				<span>Model <em>+</em> AR <em>+</em> Compare</span>
+			</a>
+			<a href="#" class="preset__link" data-preset="preset4">
+				<span>WFI <em>+</em> AR <em>+</em> Compare</span>
+			</a>
+			<a href="#" class="preset__link" data-preset="preset5">
+				<span>Room <em>+</em> Design <em>+</em> AR <em>+</em> Compare </span>
+			</a>
+			<a href="#" class="preset__link" data-preset="preset6">
+				<span>Room <em>+</em> Design <em>+</em> Compare </span>
+			</a>
+		</div>
+		<div class="container__workspace">
+			<div class="workspace workspace__data">
+				<div class="data__title">
+					<span>DATA</span>
+					<button class="addItemButton" data-target="#dataDroppable">ADD ITEM</button>
+				</div>
+				<div id="dataDroppable"></div>
+			</div>
+			<div class="workspace workspace__mobile">
+				<div class="mobile__title">
+					<span>MOBILE</span>
+					<button class="addItemButton" data-target="#mobileDroppable">ADD ITEM</button>
+				</div>
+				<div id="mobileDroppable"></div>
+			</div>
+			<div class="workspace workspace__output">
+				<div class="output__title">
+					<span>OUTPUT</span>
+				</div>
+				<textarea id="outputLog">
+				</textarea>
+				<div class="copy__overlay">
+					Copied!
+				</div>
+				<div class="button__container">
+					<button id="clearOutputButton">CLEAR</button>
+					<button id="copyOutputButton">COPY</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+<script src="./js/ItemGenerate.js"></script>
+</body>
+</html>
