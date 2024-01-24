@@ -1,24 +1,90 @@
-const configUrl = '../ItemConfig.json';
+// Встроенный объект конфигурации
+const embeddedConfig = {
+  // Ваш JSON-код здесь
+  "items": [
+		{
+			"id": "model",
+			"title": "Model",
+			"imagePath": "./assets/image/model.svg",
+			"defaultOptions": ["viewIn2DContext", "multiProduct"]
+		},
+		{
+			"id": "ar",
+			"title": "AR",
+			"imagePath": "./assets/image/ar.svg",
+			"defaultOptions": ["arImage", "arCamera"]
+		},
+		{
+			"id": "compare",
+			"title": "Compare",
+			"imagePath": "./assets/image/compare.svg",
+			"defaultOptions": ["product", "history"]
+		},
+		{
+			"id": "roomView",
+			"title": "Room View",
+			"imagePath": "./assets/image/roomView.svg",
+			"defaultOptions": ["viewIn3DContext"]
+		},
+		{
+			"id": "stagingRoom",
+			"title": "Staging Room",
+			"imagePath": "./assets/image/stagingRoom.svg",
+			"defaultOptions": ["stagingRoom"]
+		},
+		{
+			"id": "stackable",
+			"title": "Stackable",
+			"imagePath": "./assets/image/stackable.svg",
+			"defaultOptions": ["catalogItems"]
+		},
+		{
+			"id": "willItFit",
+			"title": "Will It Fit",
+			"imagePath": "./assets/image/willItFit.svg",
+			"defaultOptions": ["willItFit"]
+		},
+		{
+			"id": "wishlist",
+			"title": "Wishlist",
+			"imagePath": "./assets/image/wishlist.svg",
+			"defaultOptions": ["wishListItems"]
+		}
+  ],
+  "options": [
+    "viewIn3DContext",
+    "viewIn2DContext",
+    "multiProduct",
+    "stagingRoom",
+    "arImage",
+    "arCamera",
+    "product",
+    "history",
+    "human",
+    "catalogItems",
+    "wishListItems",
+    "willItFit"
+  ],
+  "presets": {
+    "preset1": ["model", "ar"],
+    "preset2": ["model", "compare"],
+    "preset3": ["model", "ar", "compare"],
+    "preset4": ["willItFit", "ar", "compare"],
+    "preset5": ["roomView", "stagingRoom", "ar", "compare"],
+    "preset6": ["roomView", "stagingRoom", "compare"]
+  }
+};
+
 let itemsConfig = null;
 let optionsConfig = null;
 let presetsConfig = null; // Добавлено для хранения пресетов
 
 // Функция для загрузки конфигурации
-function loadConfiguration(url) {
-	// Возвращаем fetch промис непосредственно
-	return fetch(url)
-					.then(response => {
-							if (!response.ok) {
-									throw new Error('Network response was not ok');
-							}
-							return response.json();
-					})
-					.then(data => {
-							itemsConfig = data.items;
-							optionsConfig = data.options;
-							presetsConfig = data.presets; // Загрузка пресетов
-					})
-					.catch(error => console.error('Ошибка загрузки конфигурации:', error));
+function loadConfiguration() {
+  // Непосредственное присваивание данных переменным конфигурации
+  itemsConfig = embeddedConfig.items;
+  optionsConfig = embeddedConfig.options;
+  presetsConfig = embeddedConfig.presets; // Загрузка пресетов
 }
 
 // Функция для создания опции айтема
@@ -161,11 +227,12 @@ function createAndAppendItem(itemId, targetSelector) {
 	}
 }
 
-loadConfiguration(configUrl).then(() => {
-	const addButtons = document.querySelectorAll('.addItemButton');
-	addButtons.forEach(button => {
-			button.addEventListener('click', openItemSelectionMenu);
-	});
+loadConfiguration();
+
+// Теперь можно сразу перейти к остальному коду, так как конфигурация уже загружена
+const addButtons = document.querySelectorAll('.addItemButton');
+addButtons.forEach(button => {
+    button.addEventListener('click', openItemSelectionMenu);
 });
 
 
@@ -530,25 +597,26 @@ const onEndUpdate = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-	loadConfiguration(configUrl).then(() => {
-			// Инициализация Sortable для 'dataDroppable'
-			new Sortable(document.getElementById('dataDroppable'), {
-					animation: 150,
-					group: 'shared',
-					ghostClass: 'sortable-ghost',
-					onStart: onStart,
-					onMove: onMove,
-					onEnd: onEndUpdate
-			});
+    // Синхронный вызов loadConfiguration
+    loadConfiguration();
 
-			// Инициализация Sortable для 'mobileDroppable'
-			new Sortable(document.getElementById('mobileDroppable'), {
-					animation: 150,
-					group: 'shared',
-					ghostClass: 'sortable-ghost',
-					onStart: onStart,
-					onMove: onMove,
-					onEnd: onEndUpdate
-			});
-	});
+    // Инициализация Sortable для 'dataDroppable'
+    new Sortable(document.getElementById('dataDroppable'), {
+        animation: 150,
+        group: 'shared',
+        ghostClass: 'sortable-ghost',
+        onStart: onStart,
+        onMove: onMove,
+        onEnd: onEndUpdate
+    });
+
+    // Инициализация Sortable для 'mobileDroppable'
+    new Sortable(document.getElementById('mobileDroppable'), {
+        animation: 150,
+        group: 'shared',
+        ghostClass: 'sortable-ghost',
+        onStart: onStart,
+        onMove: onMove,
+        onEnd: onEndUpdate
+    });
 });
